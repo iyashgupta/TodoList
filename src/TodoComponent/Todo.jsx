@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import { MdDelete, MdModeEdit } from 'react-icons/md'; 
 import "./Todo.css";
 
 function Todo({ todo, remove, update, toggleComplete }) {
@@ -9,17 +9,21 @@ function Todo({ todo, remove, update, toggleComplete }) {
   const handleClick = evt => {
     remove(evt.target.id);
   };
+
   const toggleFrom = () => {
     setIsEditing(!isEditing);
   };
+
   const handleUpdate = evt => {
     evt.preventDefault();
     update(todo.id, task);
     toggleFrom();
   };
+
   const handleChange = evt => {
     setTask(evt.target.value);
   };
+
   const toggleCompleted = evt => {
     toggleComplete(evt.target.id);
   };
@@ -46,15 +50,16 @@ function Todo({ todo, remove, update, toggleComplete }) {
         </li>
         <div className="Todo-buttons">
           <button onClick={toggleFrom}>
-            <i className="fas fa-pen" />
+            <MdModeEdit /> 
           </button>
           <button onClick={handleClick}>
-            <i id={todo.id} className="fas fa-trash" />
+            <MdDelete id={todo.id} /> 
           </button>
         </div>
       </div>
     );
   }
+  
   return result;
 }
 
